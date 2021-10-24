@@ -12,7 +12,22 @@ const router = Router();
 
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/pokemons', async (req,res)=>{
-    var pokemons = await Pokemon.findAll()
+  if(req.query.search){
+    var db = await Pokemon.findAll({where:{name : req.query.search}})
+    if(db.length) return res.json(db)
+    else {
+      var api = await axios('https://pokeapi.co/api/v2/pokemon/'+req.query.search)
+                .then(response => response.data)        
+      return res.json({
+        name: api.forms[0].name,
+        types: api.types,
+        image: api.sprites.front_default,
+        gif: api.sprites.versions["generation-v"]["black-white"].animated.front_default
+      })  
+    }
+  }  
+  
+  var pokemons = await Pokemon.findAll()
     res.json(pokemons)
 })
 
