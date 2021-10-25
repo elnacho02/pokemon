@@ -25,14 +25,16 @@ function Cards({fetchPokemons, Pokemons}) {
      
     return (
         <div className={s.container}>
-            {Pokemons.map(x => (
-                <Card 
-                    name={x.name.toUpperCase()}
-                    img={x.img}
-                    types={x.types}
-                    gif={x.gif}
-                />
-            ))}
+            
+                {Pokemons.map(x => (
+                  <Card 
+                      name={x.name.toUpperCase()}
+                      img={x.img}
+                      types={x.types}
+                      gif={x.gif}
+                  />
+              ))}
+
         </div>
     )
 }

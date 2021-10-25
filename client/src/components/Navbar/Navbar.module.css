@@ -15,7 +15,9 @@ textarea:focus, input:focus{
     justify-content: center;
     align-items: center;
     width: 15%;
+    color: rgba(88,88,90,255);
 }
+
 .logo>img{
     width: 20%;
 }
@@ -40,6 +42,9 @@ textarea:focus, input:focus{
     border: 0px;
     height: 35px;
     font-size: 15px;
+}
+.buscador>h3{
+    color: rgba(238,64,53,255)
 }
 
 
