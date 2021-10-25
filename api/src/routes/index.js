@@ -50,7 +50,7 @@ router.get('/databaseTypes', async (req,res)=>{
     })
 })
 router.get('/databasePoke', async (req,res)=>{
-    var api = await axios('https://pokeapi.co/api/v2/pokemon?limit=39&offset=1').then(response => response.data.results);
+    var api = await axios('https://pokeapi.co/api/v2/pokemon?limit=40').then(response => response.data.results);
     
     await Promise.all(api.map(async element => 
         {var att = await axios(element.url)
@@ -74,7 +74,6 @@ router.get('/databasePoke', async (req,res)=>{
             res.send(error);
           }
     })
-
 })
 
 

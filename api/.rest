@@ -1,4 +1,4 @@
-GET http://localhost:3001/pokemons?search=poliwag HTTP/1.1
+GET http://localhost:3001/pokemons?search=pikachu HTTP/1.1
 
 ## 
 

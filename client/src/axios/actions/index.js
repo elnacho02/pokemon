@@ -8,13 +8,15 @@ export function addResult(post) {
     }
   }
 
-export function fetchPokemons() {
+export function fetchPokemons(url) {
   return function (dispatch) {
     //dispatch(getPost());
-    axios('http://localhost:3001/pokemons')
+    axios(url)
     .then(x => dispatch(addResult(x.data)))
     }
   }
+
+
 
 
   
