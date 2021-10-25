@@ -1,10 +1,16 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import s from "./Card.module.css"
-function Card({name, types, img, gif}) {
-
+function Card({name, types, img, gif, id}) {
+    let history = useHistory()
+    
+    function handleInfo(x){
+        
+        history.push("/pokemon/"+x)
+      }
     return (
         <div className={s.mainContainer}>
-            <div className={s.container}>
+            <div className={s.container} onClick={()=>handleInfo(id)}>
                 <div className={s.name}>
                     <h4>{name}</h4>
                 </div>

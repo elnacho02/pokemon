@@ -11,6 +11,7 @@ export function addResult(post) {
 export function fetchPokemons(url) {
   return function (dispatch) {
     //dispatch(getPost());
+    console.log(url)
     axios(url)
     .then(x => dispatch(addResult(x.data)))
     }

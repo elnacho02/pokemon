@@ -13,9 +13,8 @@ function useQuery(){
 function Cards({fetchPokemons, Pokemons}) {
     const query = useQuery();
     const search = query.get("search")
-    console.log(search)
       
-    useEffect(() => {
+    useEffect( () => {
       const searchUrl = search ? "http://localhost:3001/pokemons?search=" + search : "http://localhost:3001/pokemons" 
       fetchPokemons(searchUrl)
     },[search]);
@@ -23,11 +22,12 @@ function Cards({fetchPokemons, Pokemons}) {
 
      console.log(Pokemons)
      
-    return (
+    if(Pokemons.length)return (
         <div className={s.container}>
             
-                {Pokemons.map(x => (
+                {Pokemons[0].map(x => (
                   <Card 
+                      id={x.id}
                       name={x.name.toUpperCase()}
                       img={x.img}
                       types={x.types}
@@ -36,6 +36,11 @@ function Cards({fetchPokemons, Pokemons}) {
               ))}
 
         </div>
+    )
+    else return (
+      <div>
+        
+      </div>
     )
 }
 

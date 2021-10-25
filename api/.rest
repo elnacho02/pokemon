@@ -1,4 +1,4 @@
-GET http://localhost:3001/pokemons?search=pikachu HTTP/1.1
+GET http://localhost:3001/pokemons HTTP/1.1
+### 
 
-## 
-
+GET https://pokeapi.co/api/v2/pokemon/52 HTTP/1.1

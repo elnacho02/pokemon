@@ -7,7 +7,14 @@ const initialState = {
 const rootReducer=(state = initialState, action) => {
     switch (action.type) { 
         case 'ADD_RESULT':
-        return {
+        if(typeof action.post === "object"){
+          return {
+            ...state,
+            pokemons: [action.post],
+            
+          }
+        }
+        else return {
           ...state,
           pokemons: action.post,
           

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 function FirstPage() {
     return (
         <div>
-            <Link to="/home">HOME</Link>
+            <Link to="/pokemons">HOME</Link>
         </div>
     )
 }

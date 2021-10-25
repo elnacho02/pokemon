@@ -1,13 +1,10 @@
 import   React from 'react'
-import { connect } from "react-redux";
-import * as actionsCreators from "../../axios/actions/index";
-import { bindActionCreators } from 'redux';
 import { useState } from "react"
 import { useHistory, Link } from "react-router-dom"
 import s from "./Navbar.module.css"
 
 
-export const Navbar = ({fetchSearch}) => {
+export const Navbar = () => {
     let history = useHistory()
     var [busqueda, setBusqueda] = useState("")
     
@@ -18,6 +15,7 @@ export const Navbar = ({fetchSearch}) => {
         x.preventDefault();
         history.push("?search="+busqueda)
       }
+    
     return (
         <div className={s.container}>
             
@@ -42,8 +40,6 @@ export const Navbar = ({fetchSearch}) => {
     )
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators(actionsCreators, dispatch);
-  }
 
-export default connect(null,mapDispatchToProps)(Navbar)
+
+export default Navbar
