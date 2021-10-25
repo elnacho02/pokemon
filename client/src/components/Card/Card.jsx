@@ -1,14 +1,25 @@
 import React from 'react'
 import s from "./Card.module.css"
 function Card({name, types, img, gif}) {
+
     return (
         <div className={s.mainContainer}>
             <div className={s.container}>
                 <div className={s.name}>
                     <h4>{name}</h4>
                 </div>
+                <div className={s.separador}>
+                    <div className={s.rojo}/>
+                    <div className={s.gris}/>
+                    <div className={s.blanco}/>
+                </div>  
                 <div className={s.img}>
                     <img src={gif} alt={s.gif}/>
+                </div>
+                <div className={s.types}>
+                    {types.map(x=>(
+                        <h5 className={x.type.name}>{x.type.name.toUpperCase()}</h5>
+                    ))}
                 </div>
             </div> 
         </div>

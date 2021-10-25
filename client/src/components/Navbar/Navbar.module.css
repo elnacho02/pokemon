@@ -15,11 +15,12 @@ textarea:focus, input:focus{
     justify-content: center;
     align-items: center;
     width: 15%;
-    color: rgba(88,88,90,255);
+    color: rgba(88,88,90,255);  
 }
-
+.logo>h2{cursor: pointer;}
 .logo>img{
     width: 20%;
+    cursor: pointer;
 }
 .buscadorContainer{
     width: 70%;
@@ -32,19 +33,24 @@ textarea:focus, input:focus{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 40%;
     height: 35px;
     border: 2px solid grey;
     border-radius: 20px;
 }
 .buscador>input{
-    width: 90%;
+    width: 85%;
     border: 0px;
-    height: 35px;
+    height: 33px;
     font-size: 15px;
+    color: rgba(88,88,90,255);
+    font-weight: 700;
 }
-.buscador>h3{
-    color: rgba(238,64,53,255)
+.buscador>img{
+    width: 7%;
+}
+.buscador>img:hover{
+    transform: scale(1.1);
 }
 
 

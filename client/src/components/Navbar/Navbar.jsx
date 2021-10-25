@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as actionsCreators from "../../axios/actions/index";
 import { bindActionCreators } from 'redux';
 import { useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, Link } from "react-router-dom"
 import s from "./Navbar.module.css"
 
 
@@ -22,8 +22,8 @@ export const Navbar = ({fetchSearch}) => {
         <div className={s.container}>
             
             <div className={s.logo}>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt="logo" />
-                <h2>PokeApp</h2>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt="logo" />
+                    <h2>PokeApp</h2>
             </div>
             <div className={s.buscadorContainer}>
                 <form className={s.buscador} onSubmit={handleSubmit}>
@@ -34,7 +34,7 @@ export const Navbar = ({fetchSearch}) => {
                     autoComplete="off"
                     value={busqueda}
                     onChange={(e) => handleChange(e)}/>
-                  <h3 onClick={handleSubmit}>O</h3>
+                  <img src="https://i.ibb.co/MNWGBcG/search-238.png" alt="search" onClick={handleSubmit}/>
                 </form>
             </div>
             <div className={s.about}></div>
