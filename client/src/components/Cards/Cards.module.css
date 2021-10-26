@@ -1,8 +1,13 @@
+.mainContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .container{
     display: grid;
     grid-template-columns: repeat(auto-fill, 330px);
     gap: 40px;
-    padding: 40px;
     justify-content: center;
     margin-top: 0px;
 }

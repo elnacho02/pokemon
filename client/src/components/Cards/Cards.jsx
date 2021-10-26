@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux'
 import * as actionsCreators from "../../axios/actions/index";
 import { bindActionCreators } from 'redux';
-import {Card} from "../index";
+import {Card, FilterBar} from "../index";
 import s from "./Cards.module.css"
 
 function useQuery(){
@@ -23,7 +23,9 @@ function Cards({fetchPokemons, Pokemons}) {
      console.log(Pokemons, "cards console")
      
     if(Pokemons.length)return (
-        <div className={s.container}>
+        <div className={s.mainContainer}>
+          <FilterBar />
+           <div className={s.container}>
             {Pokemons.map(x => (
                   <Card 
                       id={x.id}
@@ -33,8 +35,8 @@ function Cards({fetchPokemons, Pokemons}) {
                       gif={x.gif}
                   />
               ))}
-
-        </div>
+            </div>
+          </div>
     )
     else return (
       <div>
