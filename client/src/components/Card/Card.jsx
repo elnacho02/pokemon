@@ -5,7 +5,6 @@ function Card({name, types, img, gif, id}) {
     let history = useHistory()
     
     function handleInfo(x){
-        
         history.push("/pokemon/"+x)
       }
     return (
@@ -24,7 +23,7 @@ function Card({name, types, img, gif, id}) {
                 </div>
                 <div className={s.types}>
                     {types.map(x=>(
-                        <h5 className={x.type.name}>{x.type.name.toUpperCase()}</h5>
+                        <h5 className={x}>{x.toUpperCase()}</h5>
                     ))}
                 </div>
             </div> 

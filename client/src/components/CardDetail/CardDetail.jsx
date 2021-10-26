@@ -12,21 +12,27 @@ function CardDetail  () {
         axios('http://localhost:3001/pokemon/' + pokeId)
        .then(x => setDetails(x.data[0]))
     },[])
-     console.log(details)
+
+    console.log(details)
+
     if(details)return (
         <div className={s.container}>
+            <img src="https://pbs.twimg.com/media/DVMT-6OXcAE2rZY.jpg" alt="" />
+            <div className={s.card}>
+                
+                <div className={s.title}>
+                    <h2>{details.name.toUpperCase()}</h2>
+                </div>
+                <div className={s.images}>
+                    <img src={details.gif} alt="" />
+                </div>
+                <div className={s.types}>
+                    {details.types.map(x => (
+                        <h5 className={x}>{x.toUpperCase()}</h5>
+                    ))}
+                </div>
+            </div>
             
-            <div className={s.title}>
-                <h2>{details.name}</h2>
-            </div>
-            <div className={s.images}>
-                <img src={details.img} alt="" />
-            </div>
-            <div className={s.types}>
-                {details.types.map(x => (
-                    <h5 className={x.type.name}>{x.type.name.toUpperCase()}</h5>
-                ))}
-            </div>
         </div>
     )
     else return (

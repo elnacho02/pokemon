@@ -4,7 +4,7 @@ import { useHistory, Link } from "react-router-dom"
 import s from "./Navbar.module.css"
 
 
-export const Navbar = () => {
+export const Navbar = ({det}) => {
     let history = useHistory()
     var [busqueda, setBusqueda] = useState("")
     
@@ -17,9 +17,9 @@ export const Navbar = () => {
       }
     
     return (
-        <div className={s.container}>
+        <div className={det ===true ? s.container1 : s.container}>
             
-            <div className={s.logo}>
+            <div className={det ===true ? s.logo1 : s.logo}>
                     <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt="logo" />
                     <h2>PokeApp</h2>
             </div>

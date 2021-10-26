@@ -20,12 +20,11 @@ function Cards({fetchPokemons, Pokemons}) {
     },[search]);
     
 
-     console.log(Pokemons)
+     console.log(Pokemons, "cards console")
      
     if(Pokemons.length)return (
         <div className={s.container}>
-            
-                {Pokemons[0].map(x => (
+            {Pokemons.map(x => (
                   <Card 
                       id={x.id}
                       name={x.name.toUpperCase()}
