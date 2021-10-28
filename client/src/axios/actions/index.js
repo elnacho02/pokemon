@@ -7,6 +7,12 @@ export function addResult(post) {
       post
     }
   }
+export function addTypes(post) {
+    return {
+      type: 'ADD_TYPES',
+      post
+    }
+  }
 
 export function fetchPokemons(url) {
   return function (dispatch) {
@@ -16,6 +22,14 @@ export function fetchPokemons(url) {
     .then(x => dispatch(addResult(x.data)))
     }
   }
+
+  export function fetchTypes(i) {
+    return function (dispatch) {
+      //dispatch(getPost());
+      axios('http://localhost:3001/getTypes/'+i)
+      .then(x => dispatch(addTypes(x.data)))
+      }
+    }
 
 
 

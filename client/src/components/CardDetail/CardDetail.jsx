@@ -13,7 +13,7 @@ function CardDetail  () {
        .then(x => setDetails(x.data[0]))
     },[])
 
-    console.log(details)
+    console.log(details, "details")
 
     if(details)return (
         <div className={s.container}>

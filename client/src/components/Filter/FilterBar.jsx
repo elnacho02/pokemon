@@ -1,67 +1,80 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { useState } from 'react'
-import s from "./FilterBar1.module.css"
+import { useHistory } from "react-router-dom"
+import s from "./FilterBar.module.css"
 
-function FilterBar() {
+function FilterBar({Types}) {
+    let history = useHistory()
+    var [filter, setFilter] = useState("all")
+    var [origin, setOrigin] = useState("all")
     
+    function handleChangeFilter(e){
+        setFilter(e.target.value);
+      }
+    function handleChangeOrigin(e){
+        setOrigin(e.target.value);
+      }
+     function handleSubmit(e){
+        e.preventDefault()
+        history.push('?filter='+filter+'&origin='+origin)
+      }
     return(
         <div className={s.container}>
             <input type="checkbox" className={s.checkbox} id='check'/>
-            <label for="check" className={s.menu}>|||</label>
+            <label for="check" className={s.menu}><img src="https://www.clipartmax.com/png/small/282-2826625_short-arrow-right-svg-png-icon-free-download-487639-slider-arrow-icon.png" alt="" /></label>
             <div className={s.leftPanel}>
+                
+                <div className={s.orderByContainer}>
+                        <div className={s.orderBy}>
+                        <span>Order By</span>
+                            <select className={s.order}>
+                                <option value="a-z">A-Z</option>
+                                <option value="z-a">Z-A</option>
+                                <option value="DESC name">Lower Strength</option>
+                                <option value="ASC Name">Higher Strength</option>
+                            </select>  
+                        </div>
+                    </div>
                 <div className={s.filterByContainer}>
+                    <div>
+                        <div>
+
+                        </div>
+                        <div>
+                      
+                        </div>
+                    </div>
+                    
                     <div className={s.filterBy}>
-                        <span>Filter By</span>
-                        <select className={s.filter}>
-                            <option value="All">All</option>
-                            <option value="Grass">Grass</option>
-                            <option value="Fire">Fire</option>
+                        <span>Types</span>
+                        <select className={s.filter} value={filter} onChange={handleChangeFilter}>
+                            <option value="all">All</option>
+                            {Types.map(x=>(
+                                <option value={x.name}>{x.name.charAt(0).toUpperCase() + x.name.slice(1)}</option>
+                            ))}
+                            
+                            {/* 
+                            <option value="grass">Grass</option>
+                            <option value="fire">Fire</option> */}
                         </select>
                     </div>
+                <button type="" onClick={handleSubmit}></button>
                 </div>
-                <div className={s.orderByContainer}>
-                    <div className={s.orderBy}>
-                    <span>Order By</span>
-                        <select className={s.order}>
-                            <option value="ASC id">ASC Id</option>
-                            <option value="DESC name">DESC Name</option>
-                            <option value="ASC Name">ASC Name</option>
-                        </select>  
-                    </div>
-                </div>
+                
             </div>
 
         </div>
 
 
     )
-    
-    
-    /* return (
-        <div className={s.container}>
-            <div className={s.filterByContainer}>
-                <div className={s.filterBy}>
-                    <span>Filter By</span>
-                    <select className={s.filter}>
-                        <option value="All">All</option>
-                        <option value="Grass">Grass</option>
-                        <option value="Fire">Fire</option>
-                    </select>
-                </div>
-            </div>
-            <div className={s.orderByContainer}>
-                <div className={s.orderBy}>
-                <span>Order By</span>
-                    <select className={s.order}>
-                        <option value="ASC id">ASC Id</option>
-                        <option value="DESC name">DESC Name</option>
-                        <option value="ASC Name">ASC Name</option>
-                    </select>  
-                </div>
-            </div>
-
-        </div>
-    ) */
 }
 
-export default FilterBar
+function mapStateToProps(state){
+    return {
+      Types: state.types
+    }
+  }
+
+export default connect(mapStateToProps, null)(FilterBar)
+

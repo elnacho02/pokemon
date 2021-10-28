@@ -1,0 +1,28 @@
+.noResult{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.noResult>h3{
+    font-family:'Courier New', Courier, monospace;
+    font-weight:lighter;
+    color: white;
+    text-shadow: 3px 0px 7px rgba(32, 26, 4, 0.8), -3px 0px 7px rgba(32, 26, 4, 0.8), 0px 4px 7px rgba(32, 26, 4, 0.8);
+}
+.noResult>img{
+    z-index: -1;
+    position: absolute;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+.boton{
+    position: absolute;
+    cursor: pointer;
+    top: 20%;
+    font-family:'Courier New', Courier, monospace;
+    width: 150px;
+    background-color: rgb(219, 219, 219);
+    text-align: center;
+}

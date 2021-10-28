@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import s from "./Card.module.css"
-function Card({name, types, img, gif, id}) {
+function Card({name, types, Types, img, gif, id}) {
     let history = useHistory()
     
     function handleInfo(x){
@@ -22,9 +22,9 @@ function Card({name, types, img, gif, id}) {
                     <img src={gif} alt={s.gif}/>
                 </div>
                 <div className={s.types}>
-                    {types.map(x=>(
+                     {types.map(x=>(
                         <h5 className={x}>{x.toUpperCase()}</h5>
-                    ))}
+                    ))} 
                 </div>
             </div> 
         </div>

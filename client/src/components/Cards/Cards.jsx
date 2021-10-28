@@ -4,23 +4,29 @@ import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux'
 import * as actionsCreators from "../../axios/actions/index";
 import { bindActionCreators } from 'redux';
-import {Card, FilterBar} from "../index";
+import {Card, FilterBar, NoResult} from "../index";
 import s from "./Cards.module.css"
 
 function useQuery(){
     return new URLSearchParams(useLocation().search)
   }
-function Cards({fetchPokemons, Pokemons}) {
+function Cards({fetchPokemons, fetchTypes, Pokemons}) {
     const query = useQuery();
     const search = query.get("search")
-      
+    const filter = query.get("filter")
+    const origin = query.get("origin")
+    
     useEffect( () => {
-      const searchUrl = search ? "http://localhost:3001/pokemons?search=" + search : "http://localhost:3001/pokemons" 
+      var searchUrl = "";
+      if(search) searchUrl = "http://localhost:3001/pokemons?search=" + search
+      else if(filter && origin) searchUrl = "http://localhost:3001/pokemons?filter=" + filter + "&origin=" + origin
+      else searchUrl = "http://localhost:3001/pokemons" 
       fetchPokemons(searchUrl)
-    },[search]);
+      fetchTypes(10)
+    },[search, filter]);
     
 
-     console.log(Pokemons, "cards console")
+     console.log(Pokemons)
      
     if(Pokemons.length)return (
         <div className={s.mainContainer}>
@@ -30,7 +36,6 @@ function Cards({fetchPokemons, Pokemons}) {
                   <Card 
                       id={x.id}
                       name={x.name.toUpperCase()}
-                      img={x.img}
                       types={x.types}
                       gif={x.gif}
                   />
@@ -39,9 +44,7 @@ function Cards({fetchPokemons, Pokemons}) {
           </div>
     )
     else return (
-      <div>
-        
-      </div>
+        <NoResult/>
     )
 }
 

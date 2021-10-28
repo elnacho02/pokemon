@@ -1,7 +1,8 @@
 
 
 const initialState = {
-    pokemons: []
+    pokemons: [],
+    types: []
   }
   
 const rootReducer=(state = initialState, action) => {
@@ -11,6 +12,11 @@ const rootReducer=(state = initialState, action) => {
           ...state,
           pokemons: action.post,
           
+        }
+        case 'ADD_TYPES':
+         return {
+          ...state,
+          types: action.post,
         }
       default:
         return {...state}
