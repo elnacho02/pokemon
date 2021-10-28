@@ -21,8 +21,25 @@
     position: absolute;
     cursor: pointer;
     top: 20%;
-    font-family:'Courier New', Courier, monospace;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 150px;
-    background-color: rgb(219, 219, 219);
-    text-align: center;
+    height: 30px;
+    background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
 }
+.boton:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+
+
+     

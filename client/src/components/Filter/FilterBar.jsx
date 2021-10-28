@@ -22,7 +22,7 @@ function FilterBar({Types}) {
     return(
         <div className={s.container}>
             <input type="checkbox" className={s.checkbox} id='check'/>
-            <label for="check" className={s.menu}><img src="https://www.clipartmax.com/png/small/282-2826625_short-arrow-right-svg-png-icon-free-download-487639-slider-arrow-icon.png" alt="" /></label>
+            <label for="check" className={s.menu}><img src="http://cdn.onlinewebfonts.com/svg/img_211250.png" alt="" /></label>
             <div className={s.leftPanel}>
                 
                 <div className={s.orderByContainer}>

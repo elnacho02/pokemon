@@ -22,13 +22,13 @@ function Cards({fetchPokemons, fetchTypes, Pokemons}) {
       else if(filter && origin) searchUrl = "http://localhost:3001/pokemons?filter=" + filter + "&origin=" + origin
       else searchUrl = "http://localhost:3001/pokemons" 
       fetchPokemons(searchUrl)
-      fetchTypes(10)
+      fetchTypes(12)
     },[search, filter]);
     
 
      console.log(Pokemons)
      
-    if(Pokemons.length)return (
+    if(Pokemons !== 'noResult')return (
         <div className={s.mainContainer}>
           <FilterBar />
            <div className={s.container}>
