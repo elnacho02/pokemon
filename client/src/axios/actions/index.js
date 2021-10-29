@@ -7,6 +7,11 @@ export function addResult(post) {
       post
     }
   }
+export function deletePokemons() {
+    return {
+      type: 'DELETE_POKEMONS'
+    }
+  }
 export function addTypes(post) {
     return {
       type: 'ADD_TYPES',

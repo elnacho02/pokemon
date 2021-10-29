@@ -63,7 +63,6 @@ router.get('/pokemon/:id', async (req,res)=>{
       db1.length && res.send(db1) 
   }})
 
-
 router.get('/pokemons', async (req,res)=>{
   //search query
   if(req.query.search){
@@ -71,11 +70,9 @@ router.get('/pokemons', async (req,res)=>{
     if(db.length) return res.send(db)
     
     var api = await axios('https://pokeapi.co/api/v2/pokemon/'+req.query.search)
-                .then(response => response.data).catch(error => error)        
-    if(api.name === "Error") return res.send("noResult") 
-    else if(api.length) {
-      return res.json(apiPoke(api))}
+                .then(response => response.data).catch(error => res.send("noResult"))        
     
+    res.json(apiPoke(api)) 
   } 
   
   

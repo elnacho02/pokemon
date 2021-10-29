@@ -1,18 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useHistory } from 'react-router-dom'
 import s from "./Card.module.css"
 
 function Card({name, types, Types, img, gif, id}) {
 
     let history = useHistory()
+    var [clicked,setClicked] = useState("")
     
     function handleInfo(x){
-        history.push("/pokemon/"+x)
+        setClicked(x)
+        setTimeout(()=>history.push("/pokemon/"+x), 900)
       }
     
       return (
         <div className={s.mainContainer}>
-            <div className={s.container} onClick={()=>handleInfo(id)}>
+            <div className={clicked === id ? s.clicked : s.container} onClick={()=>handleInfo(id)}>
                 <div className={s.name}>
                     <h4>{name.toUpperCase()}</h4>
                 </div>
@@ -26,6 +28,7 @@ function Card({name, types, Types, img, gif, id}) {
                    
                 </div>
                 <div className={s.types}>
+                     
                      {types.map(x=>(
                         <div className={s.logoType}>
                             <img src={require("../../media/types/"+x+".png").default} alt="x"/>

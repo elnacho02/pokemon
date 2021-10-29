@@ -10,7 +10,7 @@ import s from "./Cards.module.css"
 function useQuery(){
     return new URLSearchParams(useLocation().search)
   }
-function Cards({fetchPokemons, fetchTypes, Pokemons}) {
+function Cards({fetchPokemons, deletePokemons,fetchTypes, Pokemons}) {
     const query = useQuery();
     const search = query.get("search")
     const filter = query.get("filter")
@@ -27,12 +27,17 @@ function Cards({fetchPokemons, fetchTypes, Pokemons}) {
       if(search) searchUrl = "http://localhost:3001/pokemons?search=" + search
       else if(filter && origin) searchUrl = "http://localhost:3001/pokemons?filter=" + filter + "&origin=" + origin
       else searchUrl = "http://localhost:3001/pokemons" 
+      deletePokemons()
       fetchPokemons(searchUrl)
       fetchTypes(12)
     },[search, filter]);
          
-    console.log(Pokemons)
-    if(Pokemons !== 'noResult')return (
+    
+
+    if( !Pokemons.length ) return(
+      <Waiting />
+      )
+    else if(Pokemons !== 'noResult' || Pokemons.lenght >= 1)return (
         <div className={s.mainContainer}>
           <FilterBar />
            <div className={s.container}>
@@ -50,9 +55,7 @@ function Cards({fetchPokemons, fetchTypes, Pokemons}) {
 
         </div>
     ) 
-    if(!Pokemons) return(
-        <Waiting />
-    )
+    
     else if(Pokemons === "noResult")return (
         <NoResult/>
     )

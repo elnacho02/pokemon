@@ -1,7 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 textarea:focus, input:focus, select:focus{
     outline: none;
 }
 
+button{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    background-color: transparent;
+    padding: 5px 10px;
+    border: 1px solid white;
+    text-shadow: 3px 0px 7px rgba(231, 139, 111, 0.8), -3px 0px 7px rgba(231, 139, 111, 0.8), 0px 4px 7px rgba(231, 139, 111, 0.8);
+}
+span{
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 5px;
+    text-shadow: 3px 0px 7px rgba(231, 139, 111, 0.8), -3px 0px 7px rgba(231, 139, 111, 0.8), 0px 4px 7px rgba(231, 139, 111, 0.8);
+}
+select{
+    border: none;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
 .menu{
     width: 2.3rem;
     height: 2.7rem;

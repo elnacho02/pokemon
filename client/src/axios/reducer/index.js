@@ -18,6 +18,11 @@ const rootReducer=(state = initialState, action) => {
           ...state,
           types: action.post,
         }
+        case 'DELETE_POKEMONS':
+          return{
+            ...state,
+            pokemons: []
+          }
       default:
         return {...state}
     }
