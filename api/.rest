@@ -1,10 +1,14 @@
-GET http://localhost:3001/getTypes HTTP/1.1
+GET http://localhost:3001/pokemons?search=asd HTTP/1.1
 
 ### 
 GET http://localhost:3001/pokemons?origin=all&filter=flying HTTP/1.1
 
 ### 
-GET https://pokeapi.co/api/v2/pokemon?limit=1 HTTP/1.1
+GET https://pokeapi.co/api/v2/pokemon/25 HTTP/1.1
+
+###
+
+GET https://pokeapi.co/api/v2/version-group/1/ HTTP/1.1
 
 ###
 

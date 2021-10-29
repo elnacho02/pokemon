@@ -4,12 +4,15 @@
 
 /*types colors*/
 
-.fire{color: rgb(212, 0, 0);}
-.poison{color: rgb(0, 180, 0);}
-.grass{color: darkgreen;}
-.flying{color: rgb(73, 73, 73);}
-.water{color: rgb(0, 130, 173);}
-.bug,.ground{color: rgb(83, 54, 0);}
-.fairy{color: rgb(255, 133, 154);}
-.electric{color: rgb(224, 224, 0);}
-.normal{color: rgb(107, 24, 107);}
+.fire{
+  color: rgb(212, 0, 0);
+}
+.poison{color: rgb(102, 9, 66)}
+.grass{color: darkgreen}
+.flying{color: rgb(70, 152, 177)}
+.water{color: rgb(0, 130, 173)}
+.bug,.ground{color: rgb(83, 54, 0)}
+.fairy{color: rgb(255, 133, 154)}
+.electric{color: rgb(224, 224, 0)
+}
+.normal{color: rgb(70, 70, 70)}

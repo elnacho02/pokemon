@@ -6,4 +6,6 @@ export { default as First } from './First/FirstPage';
 export { default as CardDetail } from "./CardDetail/CardDetail"
 export { default as FilterBar } from "./Filter/FilterBar"
 export { default as NoResult } from "./NoResult/NoResult"
+export { default as Pagination } from "./Pagination/Pagination"
+export { default as Waiting } from "./Waiting/Waiting"
 

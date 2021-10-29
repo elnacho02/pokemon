@@ -17,8 +17,7 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
     gif:{
-      type: DataTypes.STRING,
-      defaultValue: "https://image.pngaaa.com/169/1906169-middle.png"
+      type: DataTypes.ARRAY(DataTypes.STRING)
     },
     vida:{
       type: DataTypes.INTEGER,

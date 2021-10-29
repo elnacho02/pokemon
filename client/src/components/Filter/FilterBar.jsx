@@ -59,7 +59,7 @@ function FilterBar({Types}) {
                             <option value="fire">Fire</option> */}
                         </select>
                     </div>
-                <button type="" onClick={handleSubmit}></button>
+                    <button type="" onClick={handleSubmit}>Filter</button>
                 </div>
                 
             </div>

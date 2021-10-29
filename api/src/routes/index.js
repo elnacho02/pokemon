@@ -21,8 +21,8 @@ router.get('/getTypes/:i', async(req,res)=>{
 router.post('/createPokemon', async(req,res)=>{
   try {
     const newPok = await Pokemon.create({
-      name: "El Marcianito",
-      gif: "https://media2.giphy.com/media/YGIpIZjgxL68w/giphy.gif",
+      name: "Flying-Cat",
+      img: "https://i.gifer.com/5Xyr.gif ",
       vida: 10,
       fuerza:15,
       defensa:12,
@@ -30,7 +30,7 @@ router.post('/createPokemon', async(req,res)=>{
       peso:24,
       altura:23,
     });
-    res.json(await newPok.addTypes(["poison"]))
+    res.json(await newPok.addTypes(["normal","flying"]))
   } catch (error) {
     res.send(error);
   }
@@ -43,7 +43,7 @@ router.get('/pokemon/:id', async (req,res)=>{
   if(id){
     if(id.length<5){
       let db = await PokemonApi.findAll({where:{ id: id}})
-      if(db) return res.json(db)
+      if(db.length) return res.json(db)
       
       let api = await axios('https://pokeapi.co/api/v2/pokemon/'+id)
                 .then(response => response.data)        
@@ -67,15 +67,21 @@ router.get('/pokemon/:id', async (req,res)=>{
 router.get('/pokemons', async (req,res)=>{
   //search query
   if(req.query.search){
-    var db = await Pokemon.findAll({where:{name : req.query.search}})
+    var db = await PokemonApi.findAll({where:{name: req.query.search}})
     if(db.length) return res.send(db)
-    else {
-      var api = await axios('https://pokeapi.co/api/v2/pokemon/'+req.query.search)
-                .then(response => response.data)        
-      return res.json(apiPoke(api))  
-    }
-  }   
+    
+    var api = await axios('https://pokeapi.co/api/v2/pokemon/'+req.query.search)
+                .then(response => response.data).catch(error => error)        
+    if(api.name === "Error") return res.send("noResult") 
+    else if(api.length) {
+      return res.json(apiPoke(api))}
+    
+  } 
+  
+  
   //traida de datos + get de api en utils
+  
+  
   var db = await Pokemon.findAll({ where: {},
     include: {
       model: Type,
@@ -141,17 +147,16 @@ router.get('/databasePokemonTypes', async (req,res)=>{
     })
  
 
-})
+})*/
 router.get('/databasePoke', async (req,res)=>{
-    var api = await axios('https://pokeapi.co/api/v2/pokemon?limit=40').then(response => response.data.results);
+    var api = await axios('https://pokeapi.co/api/v2/pokemon?limit=39&offset=1').then(response => response.data.results);
     
     await Promise.all(api.map(async element => 
         {var att = await axios(element.url)
             .then((x) =>({
             id: x.data.id,
             types: x.data.types.map(x => x.type.name), 
-            image: x.data.sprites.front_default, 
-            gif: x.data.sprites.versions["generation-v"]["black-white"].animated.front_default,
+            gif: [x.data.sprites.versions["generation-v"]["black-white"].animated.front_default, x.data.sprites.versions["generation-v"]["black-white"].animated.back_default],
             vida: x.data.stats[0].base_stat,
             fuerza: x.data.stats[1].base_stat,
             defensa: x.data.stats[2].base_stat,
@@ -167,7 +172,6 @@ router.get('/databasePoke', async (req,res)=>{
                id: x.data.id, 
               name: x.name,
               types:x.data.types,
-              img: x.data.image,
               gif: x.data.gif,
               vida: x.data.vida,
               fuerza:x.data.fuerza,
@@ -189,7 +193,7 @@ router.get('/databasePoke', async (req,res)=>{
          })
     )  
 
-})  */
+})  
 
 
 module.exports = router;

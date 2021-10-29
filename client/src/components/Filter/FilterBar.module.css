@@ -1,3 +1,7 @@
+textarea:focus, input:focus, select:focus{
+    outline: none;
+}
+
 .menu{
     width: 2.3rem;
     height: 2.7rem;
@@ -11,8 +15,7 @@
     align-items: center;
     text-align: center;
     transition: left 0.5s;
-    border: 1px solid grey;
-    border-left-color: rgba(238,64,53,255); 
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     background-image: linear-gradient( 90deg,  rgba(238,64,53,255)  0.4%, rgba(245,177,97,1) 120.2% );
@@ -64,4 +67,12 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+.filterByContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
 }

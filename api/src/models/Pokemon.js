@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
     /* types:{
       type: DataTypes.ARRAY(DataTypes.STRING),
     }, */
-    gif:{
+    img:{
       type: DataTypes.STRING,
       defaultValue: "https://image.pngaaa.com/169/1906169-middle.png"
     },
@@ -51,7 +51,6 @@ module.exports = (sequelize) => {
     timestamps: true,
     createdAt: false,
     updatedAt: 'actualizado',
-    initialAutoIncrement : 1000
   })
 };
 

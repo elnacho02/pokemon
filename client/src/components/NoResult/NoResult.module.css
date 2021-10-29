@@ -21,7 +21,8 @@
     position: absolute;
     cursor: pointer;
     top: 20%;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 600;
     width: 150px;
     height: 30px;
     background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%);
@@ -31,7 +32,7 @@
     margin: 10px;
     transition: 0.5s;
     background-size: 200% auto;
-    color: white;            
+    color: rgb(255, 255, 255);            
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
 }
