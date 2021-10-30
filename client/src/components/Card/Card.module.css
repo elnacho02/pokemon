@@ -93,6 +93,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .logoType>h5{
    font-size: 11px !important;
    letter-spacing: 1px;
@@ -101,6 +102,7 @@
 }
 .logoType>img{
     width: 30px;
+    margin-bottom: 4px;
 }
 
 

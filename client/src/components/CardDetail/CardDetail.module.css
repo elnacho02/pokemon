@@ -3,6 +3,9 @@
     src: url("../../media/Minecraft.ttf") format("truetype");
 }
 
+h4, h2{
+    margin: 0;
+}
 
 .container{
     width: 100%;
@@ -59,13 +62,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    font-family: Pixel;
 }
 .images{
     height: 45%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .images>img{
@@ -74,12 +78,38 @@
     -webkit-animation: cssAnimation 0.7s forwards;
     animation: cssAnimation 0.7s forwards; 
     margin-bottom: 30px;
-    
+    cursor: pointer;
 }
-.spec{
-    width: 30%;
-    height: 90%;
+.images>img:hover{
+    transform: scale(1.05);
+    transition: 0.2s all ease-in-out;
 }
+.message{
+    position: absolute;
+    width: 160px;
+    height: 150px;
+    top: 40%;
+    left: 24%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: myAnim2 14s ease 0s 1 normal forwards; 
+}
+.message>img{
+    position: absolute;
+    z-index: -1;
+    top: 10%;
+    right: -68%;
+    width: 350px;
+    height: 150px;
+}
+.message>h5{
+    font-family: Pixel;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+
 
 .title{
     height: 15%;
@@ -88,78 +118,61 @@
     justify-content: center;
     color: rgb(255, 255, 255);
     font-family: Pixel;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     text-shadow: 3px 0px 7px rgba(33, 54, 29, 0.8), -3px 0px 7px rgba(33, 54, 29, 0.8), 0px 4px 7px rgba(33, 54, 29, 0.8);
 }
-.title>h2{
-    margin: 0px;
-}
 
-/*config specs card*/
 
-.specCard{
+/*config types*/
+
+.typesContainer{
     display: flex;
-    width: 90%;
-    height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: Pixel;
-    -webkit-animation: myAnim 1s ease 0s 1 normal forwards;
-    animation: myAnim 1s ease 0s 1 normal forwards;
-    overflow-x: hidden; overflow-y:hidden;
-    
+    width: 180px;
+    height: 95px;
+    border-radius: 16px;
+    margin-top: 20px;
+    -webkit-animation: cssAnimation 0.7s forwards;
+    animation: cssAnimation 0.7s forwards; 
 }
-.specCard>img{
-    width: 100%;
-    height: 122%;
-     position: absolute; 
-    bottom: -4%;
-    z-index: -1;
-}
-.specCard .types{
+
+
+.typesContainer .types{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-content: center;
-    gap: 20px;
+    gap: 10px;
+    text-shadow: 3px 0px 7px rgba(121, 121, 121, 0.8), -3px 0px 7px rgba(121, 121, 121, 0.8), 0px 4px 7px rgba(121, 121, 121, 0.8);
+
 }
 .logoType{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+    z-index: 2;
 }
 
 .logoType>img{
-    width: 35px;
+    max-width: 60px;
+    min-height: 50px;
+    max-height: 60px;
 }
 .logoType>h5{
     margin: 0;
+    margin-top: 2px;
     font-size: 12px;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     font-weight: 800;
 }
 
 
 
-/*spec orden*/
-.stats{
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-}
 
 
-
-.hp, .defense, .speed, .strength{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 17px;
-}
 
 
 
@@ -176,6 +189,50 @@
     100% {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+
+  @keyframes myAnim2 {
+   0%{
+       opacity: 0;
+   }
+   10%{
+       opacity: 0;
+   }
+   20%{
+       opacity: 1;
+   }
+   20%{
+    transform: translateX(10px)
+   }
+   21%{
+    transform: translateX(-10px)
+   }
+   22%{
+    transform: translateX(10px)
+   }
+   23%{
+    transform: translateX(-10px)
+   }
+   24%{
+    transform: translateX(10px)
+   }
+   25%{
+    transform: translateX(-10px)
+   }
+   26%{
+    transform: translateX(0px)
+   }
+    60%{
+        opacity: 1;
+    }
+    70%{
+        opacity: 0;
+        display: none;
+    }
+    100% {
+      opacity: 0;
+      display: none;
     }
   }
 

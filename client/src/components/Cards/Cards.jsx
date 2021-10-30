@@ -32,7 +32,7 @@ function Cards({fetchPokemons, deletePokemons,fetchTypes, Pokemons}) {
       fetchTypes(12)
     },[search, filter]);
          
-    
+    console.log(Pokemons)
 
     if( !Pokemons.length ) return(
       <Waiting />

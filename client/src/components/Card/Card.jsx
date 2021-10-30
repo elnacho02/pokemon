@@ -11,7 +11,7 @@ function Card({name, types, Types, img, gif, id}) {
         setClicked(x)
         setTimeout(()=>history.push("/pokemon/"+x), 900)
       }
-    
+      
       return (
         <div className={s.mainContainer}>
             <div className={clicked === id ? s.clicked : s.container} onClick={()=>handleInfo(id)}>
@@ -20,7 +20,6 @@ function Card({name, types, Types, img, gif, id}) {
                 </div>
                 <div className={s.separador}>
                     <div className={s.gris}><div className={s.blanco}/></div>
-                    
                 </div>  
                 <div className={s.img}>
                    {img && (<img src={img} alt={name} className={s.poke}/>)}
@@ -31,7 +30,7 @@ function Card({name, types, Types, img, gif, id}) {
                      
                      {types.map(x=>(
                         <div className={s.logoType}>
-                            <img src={require("../../media/types/"+x+".png").default} alt="x"/>
+                            <img src={require("../../media/newTypes/"+x+".png").default} alt="x"/>
                             <h5 className={x}>{x.toUpperCase()}</h5> 
                         </div>
                         

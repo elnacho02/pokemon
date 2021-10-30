@@ -1,4 +1,4 @@
-GET http://localhost:3001/pokemons?search=zapdos HTTP/1.1
+GET http://localhost:3001/pokemons HTTP/1.1
 
 ### 
 GET http://localhost:3001/pokemons?origin=all&filter=flying HTTP/1.1
