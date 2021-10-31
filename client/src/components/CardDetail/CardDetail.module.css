@@ -9,7 +9,7 @@ h4, h2{
 
 .container{
     width: 100%;
-    height: 87%;
+    height: 87vh;
     display: flex;
     justify-content: center;
     align-items:center ;
@@ -125,49 +125,13 @@ h4, h2{
 
 /*config types*/
 
-.typesContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 180px;
-    height: 95px;
-    border-radius: 16px;
-    margin-top: 20px;
-    -webkit-animation: cssAnimation 0.7s forwards;
-    animation: cssAnimation 0.7s forwards; 
+.separador{
+ width: 180px;
+  height: 95px;  
 }
 
 
-.typesContainer .types{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-content: center;
-    gap: 10px;
-    text-shadow: 3px 0px 7px rgba(121, 121, 121, 0.8), -3px 0px 7px rgba(121, 121, 121, 0.8), 0px 4px 7px rgba(121, 121, 121, 0.8);
 
-}
-.logoType{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    z-index: 2;
-}
-
-.logoType>img{
-    max-width: 60px;
-    min-height: 50px;
-    max-height: 60px;
-}
-.logoType>h5{
-    margin: 0;
-    margin-top: 2px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    font-weight: 800;
-}
 
 
 

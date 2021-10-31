@@ -7,7 +7,7 @@ const gifFra = [
         width: "150px"
     },
     {
-        gif:"https://i.gifer.com/JTz3.gif",
+        gif:"https://screenshots.gamebanana.com/img/ico/sprays/pikachu.gif",
         fra: "Loading...",
         width: "250px"
     },

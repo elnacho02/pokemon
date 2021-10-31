@@ -11,15 +11,15 @@ function CardDetail  () {
     let history = useHistory()
     var [index, setIndex] = useState(0)
     const { pokeId } = useParams();
-    var [flag,setFlag] = useState(Math.ceil(Math.random()*3))
+    var [flag,setFlag] = useState(0)
     var [details, setDetails] = useState("")
     useEffect(()=> {
+        setFlag(Math.ceil(Math.random()*3))
         axios('http://localhost:3001/pokemon/' + pokeId)
        .then(x => setDetails(x.data[0]))
        console.log("trai data")
     },[])
     function handleChange(e){
-        setFlag(2)
         if(index === 0) setIndex(1)
         else setIndex(0)
     }
@@ -51,19 +51,9 @@ function CardDetail  () {
                 <div className={s.images}>
                     <img src={typeof details.gif === "object" ? details.gif[index] : details.img} alt={details.name} onClick={handleChange}/> 
                 </div>
+                <div className={s.separador}>
                     
-                <div className={s.typesContainer}>
-                     
-                        <h4>TYPES</h4> 
-                        <div className={s.types}>
-                            {details.types.map(x => (
-                                    <div className={s.logoType}>
-                                        <img src={require("../../media/pixelTypes/"+x+".png").default} alt="x"/>
-                                        <h5 className={x}>{x.toUpperCase()}</h5> 
-                                    </div>
-                                ))} 
-                        </div>
-                    </div>
+                </div>
             </div>
             <Stats details={details}/>
             

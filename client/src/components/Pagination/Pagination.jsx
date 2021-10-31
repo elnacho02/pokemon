@@ -3,19 +3,36 @@ import s from "./Pagination.module.css"
 
 
 function Pagination({pag, setPag, pokemons}) {
+    var pageNumbers = []
+    for(let i=1; i<= Math.ceil(pokemons.length/9);i++){
+        pageNumbers.push(i)
+    }
+    console.log(pageNumbers)
     function handleChange(e){
         e.preventDefault()
         setPag(e.target.value)
+        setTimeout(()=>{
+            window.scrollTo({top: 0, left:0, behavior:'smooth'}); 
+        },500)
     }
     return (
         <div className={s.container}>
-            <div className={s.botones}>
+            {/* <div className={s.botones}>
             {pokemons.length>0 && <button type="" value={0} onClick={handleChange} className={pag=== "0" || !pag ? s.selected : s.boton}>1</button>}
             {pokemons.length>9 && <button type="" value={9} onClick={handleChange} className={pag==="9" ? s.selected : s.boton}>2</button>}
             {pokemons.length>18 && <button type="" value={18} onClick={handleChange} className={pag==="18" ? s.selected : s.boton}>3</button>}
             {pokemons.length>27 && <button type="" value={27} onClick={handleChange} className={pag==="27" ? s.selected : s.boton}>4</button>}
-            {pokemons.length>36 && <button type="" value={36} onClick={handleChange} className={pag==="36" ? s.selected : s.boton}>5</button>}
+            {pokemons.length>36 && <button type="" value={36} onClick={handleChange} className={pag==="36" ? s.selected : s.boton}>5</button>} 
+            </div> */}
+            <div className={s.botones}>
+                {pageNumbers.map(x => {
+                    x === 1 && (<div/>)
+                    return(
+                        <button type="" value={9*x-9} onClick={handleChange} className={pag != 9*x-9 ? s.boton : s.selected}>{x}</button>
+                    )
+                })}
             </div>
+            
         </div>
         
     )

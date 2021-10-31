@@ -32,13 +32,14 @@ function Cards({fetchPokemons, deletePokemons,fetchTypes, Pokemons}) {
       fetchTypes(12)
     },[search, filter]);
          
-    console.log(Pokemons)
 
     if( !Pokemons.length ) return(
       <Waiting />
       )
     else if(Pokemons !== 'noResult' || Pokemons.lenght >= 1)return (
         <div className={s.mainContainer}>
+          {/* <img src={require("../../media/other/nubes.jpg").default} alt="" className={s.fondo}/> */}
+          
           <FilterBar />
            <div className={s.container}>
             {(Pokemons.slice(pag, (parseInt(pag)+9))).map(x => (

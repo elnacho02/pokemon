@@ -8,12 +8,11 @@
     
 
 .specCard{
-     display: flex; 
-    
+    display: flex; 
     width: 80%;
     height: 90%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center; 
     font-family: Pixel;
     -webkit-animation: myAnim 1s ease 0s 1 normal forwards;
@@ -22,37 +21,79 @@
     background: rgb(226, 226, 226);
      box-shadow: 16px 0 rgb(218, 218, 218), -16px 0 rgb(218, 218, 218), 0 -16px rgb(218, 218, 218), 0 16px rgb(218, 218, 218), 4px 0 0 8px rgb(218, 218, 218), -4px 0 0 8px rgb(218, 218, 218), 0 -4px 0 8px rgb(218, 218, 218), 0 4px 0 8px rgb(218, 218, 218), 20px 0 orange, -20px 0 orange, 0 -20px orange, 0 20px orange, 0 0 0 12px orange, 0 8px 0 8px orange, 0 -8px 0 8px orange, 8px 0 0 8px orange, -8px 0 0 8px orange;
 	 margin: 20px auto; 
-     /*  box-shadow: 4px 0 white, -4px 0 white, 0 -4px white, 0 4px white, 8px 0 grey, -8px 0 grey, 0 -8px grey, 0 8px grey, 0 0 0 4px grey;
-	 margin: 8px auto;  */
-     /* box-shadow: 3px 0 white, -3px 0 white, 0 -3px white, 0 3px white, 6px 0 white, -6px 0 white, 0 -6px white, 0 6px white, 0 0 0 3px white, 9px 0 darkred, -9px 0 darkred, 0 9px darkred, 0 -9px darkred, 0 -3px 0 3px darkred, 0 3px 0 3px darkred, 3px 0 0 3px darkred, -3px 0 0 3px darkred;
-	 margin: 9px auto;  */
-     /* box-shadow: 4px 0 white, -4px 0 white, 0 -4px white, 0 4px white, 8px 0 darkred, -8px 0 darkred, 0 -8px darkred, 0 8px darkred, 0 0 0 4px darkred;
-	 margin: 8px auto; */
+    
     
 }
-/* .specCard>img{
-    width: 100%;
-    height: 122%;
-    position: absolute; 
-    bottom: -4%;
-    z-index: -1;
-} */
+.typesContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100px;
+  border-radius: 16px;
+  margin-top: 10px;
+  -webkit-animation: cssAnimation 0.7s forwards;
+  animation: cssAnimation 0.7s forwards; 
+}
+.typesContainer>h3{
+  position: absolute;
+  transform: rotate(270deg);
+  font-size: 16px;
+  letter-spacing: 2px;
+  left: 15%;
+  top: 2%;
+  transition: 0.5s all ease-in-out;
+  animation: animation1 8s forwards; 
+}
+
+
+.typesContainer .types{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
+}
+.logoType{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.logoType>img{
+  max-width: 45px;
+  min-height: 40px;
+  max-height: 45px;
+}
+.logoType>h5{
+  margin: 0;
+  margin-top: 2px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
 
 .statsContainer{
-   display: flex;
-   flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .stats{
-    display: grid;
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    grid-template-columns: 170px 170px;
-    grid-template-rows: 60px 60px;
+    align-items: flex-start;
     justify-content: flex-start;
 }
-.stats>h3{
-    align-self: center;
+.statsContainer>h3{
+    margin: 0;
+    font-size: 17px;
 }
 
 
@@ -63,9 +104,48 @@
     justify-content: center;
     align-items: center;
     font-size: 17px;
+    gap: 10px;
 }
 
+.wh{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 20px;
+}
 
+@keyframes animation1{
+  15%{
+    transform: rotate(270deg);
+    opacity: 1;
+  }
+  30%{
+    transform: rotate(270deg);
+    opacity: 1;
+    left: 15%;
+    top: 2%;
+  }
+  40%{
+    transform: rotate(0deg);
+    top: 4%;
+    left: 10%;
+    opacity: 1;
+  }
+  85%{
+    opacity: 1;
+    transform: rotate(0deg);
+    top: 4%;
+    left: 10%;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(0deg);
+    top: 4%;
+    left: 10%;
+  }
+}
 
 
 @keyframes myAnim {

@@ -1,0 +1,27 @@
+
+.progress {
+	background-color: #d8d8d8;
+	/* border-radius: 20px; */
+    /* border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px; */
+	position: relative;
+    display: flex;
+    align-items: center;
+	margin: 15px 0;
+	height: 22px;
+	width: 220px;
+    box-shadow: 1px 0 black,2px 1px black,3px 3px black, -2px 0 black, 0 -2px black, 0 2px black;
+}
+
+.progressDone {
+	/* linear-gradient(to left, #F2709, #FF9472) */
+	/* box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 90%;
+	width: 0;
+	opacity: 0;
+	transition: 1s ease 0.3s;
+    box-shadow: 1px 0 black, 2px 2px black,3px 4px black ,-2px 0 black, 0 -2px black, 0 2px black
+}

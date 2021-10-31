@@ -2,20 +2,32 @@ textarea:focus, input:focus{
     outline: none;
 }
 .container{
-    height: 13%;
+    height: 13vh;
     width: 100%;
     display: flex;
     flex-direction: row;
-    box-shadow: 0px 5px 8px rgb(189, 188, 188);
-    background: transparent;
+    box-shadow: 0px 5px 8px rgb(95, 95, 95);
+    /* background-image: url("../../media/other/nubes.jpg");
+    background-position: 0px 260px;  */
+    background-color: rgba(240,241,243,255);
+}
+.container>img{
+    width: 100%;
+    height: 13vh;
+    position: absolute;
+    z-index: -1;
+    object-fit: cover;
 }
 .container1{
-    height: 13%;
+    height: 13vh;
     width: 100%;
     display: flex;
     flex-direction: row;
     box-shadow: 0px 5px 8px rgb(70, 70, 70);
-    background: rgba(88,88,90,0.5);
+    background: rgba(88,88,90,0.5) !important;
+}
+.container1>.buscadorContainer , .container1>.about{
+    display:none
 }
 
 .logo{
@@ -79,4 +91,90 @@ textarea:focus, input:focus{
 
 .about{
     width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 20px;
+    top: -4px;
 }
+.btn{
+    color: rgba(255,64,53,1);
+    font-size: 21px;
+    font-weight: 900;
+    text-shadow: -2px 2px 0px rgba(88,88,90,255),
+                 -4px 4px 0px #fdfdfd;
+    animation: myAnim 2s ease 0s  normal forwards;
+    cursor: pointer;
+    padding: .5em .9em .5em .8em;
+}
+ 
+  .btn::before,
+  .btn::after {
+    content: '';
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    transition: all .35s ease;
+    opacity: 0;
+  }
+  
+  .btn::before {
+    content: '';
+    right: 0;
+    top: 0;
+    border-top: 3px solid rgba(255,64,53,1);
+    border-right: 3px solid rgb(187, 46, 38);
+    transform: translate(-100%, 50%);
+  }
+  
+  .btn:after {
+    content: '';
+    left: 0;
+    bottom: 0;
+    border-bottom: 3px solid rgba(255,64,53,1);
+    border-left: 3px solid rgb(187, 46, 38);
+    transform: translate(100%, -50%)
+  }
+  
+  .btn:hover:before,
+  .btn:hover:after{
+    transform: translate(0,0);
+    opacity: 1;
+  }
+  
+  .btn:hover {
+    
+  }
+
+
+
+@keyframes myAnim {
+    0%,
+    100% {
+        transform: translateX(0%);
+        transform-origin: 50% 50%;
+      }
+    
+      15% {
+        transform: translateX(-30px) rotate(-6deg);
+      }
+    
+      30% {
+        transform: translateX(15px) rotate(6deg);
+      }
+    
+      45% {
+        transform: translateX(-15px) rotate(-3.6deg);
+      }
+    
+      60% {
+        transform: translateX(9px) rotate(2.4deg);
+      }
+    
+      75% {
+        transform: translateX(-6px) rotate(-1.2deg);
+      }
+
+}
+  

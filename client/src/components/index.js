@@ -8,4 +8,6 @@ export { default as FilterBar } from "./Filter/FilterBar"
 export { default as NoResult } from "./NoResult/NoResult"
 export { default as Pagination } from "./Pagination/Pagination"
 export { default as Waiting } from "./Waiting/Waiting"
+export { default as Display } from "./display/Display"
+
 

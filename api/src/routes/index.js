@@ -37,7 +37,7 @@ router.post('/createPokemon', async(req,res)=>{
 
 })
 
-router.get('/pokemon/:id', async (req,res)=>{
+router.get('/pokemon/:id', cache(300), async (req,res)=>{
   var { id } = req.params
   console.log(id)
   if(id){

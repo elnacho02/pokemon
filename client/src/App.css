@@ -1,6 +1,10 @@
+
+body{
+  /* background: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);   */
+  background-size: cover; 
+}  
 .App {
-  height: 100vh;
- 
+  min-height: 100vh;
 }
 
 /*types colors*/
