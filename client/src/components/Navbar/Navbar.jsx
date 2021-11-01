@@ -15,7 +15,8 @@ export const Navbar = ({det, dark}) => {
         history.push("?search="+busqueda)
       }
     const style = {
-      background: dark ?  "linear-gradient(to right, rgb(67,67,67) 0%, rgb(0,0,0) 100%)" : "white",
+      background: dark ?  "linear-gradient(to right, rgb(67,67,67) 0%, rgb(0,0,0) 100%)" : "rgba(240,241,243,255)",
+      boxShadow: dark ? "0px 5px 8px rgb(66, 66, 66)" : "0px 5px 8px rgb(95, 95, 95)"
     }
     const style1 = {
       color: dark ? "white" : ""

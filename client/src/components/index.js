@@ -9,5 +9,6 @@ export { default as NoResult } from "./NoResult/NoResult"
 export { default as Pagination } from "./Pagination/Pagination"
 export { default as Waiting } from "./Waiting/Waiting"
 export { default as Display } from "./display/Display"
+export { default as Create } from "./Create/Create"
 
 

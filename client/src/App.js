@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import { Route, BrowserRouter } from "react-router-dom"
-import {Navbar, Cards, First, CardDetail, Display} from "./components/index"
+import {Navbar, Cards, First, CardDetail, Display, Create} from "./components/index"
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
               <Route  exact path="/pokemons"> <Display setDark={setDark} dark={dark} /></Route>
               <Route path="/pokemon"><Navbar det={true}/></Route>
               <Route  exact path="/pokemon/:pokeId"> <CardDetail/> </Route> 
-            
+              <Route  exact path="/create"> <Create /> </Route> 
         </BrowserRouter>
     </div>
 
