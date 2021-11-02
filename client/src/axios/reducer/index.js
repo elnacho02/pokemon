@@ -23,6 +23,7 @@ const rootReducer=(state = initialState, action) => {
             ...state,
             pokemons: []
           }
+                
       default:
         return {...state}
     }

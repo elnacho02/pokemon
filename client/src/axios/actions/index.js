@@ -19,6 +19,7 @@ export function addTypes(post) {
     }
   }
 
+
 export function fetchPokemons(url) {
   return function (dispatch) {
     //dispatch(getPost());

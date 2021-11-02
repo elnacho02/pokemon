@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+
+.mainContainer{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+    transition: all 2s ease-in-out;
+}
+
+.imgContainer{
+    width: 40%;
+    background-color: #dc3d4b;
+    clip-path: ellipse(105% 100% at -5% 0%);
+}
+.mainContainer>img{
+    z-index: 2;
+    position: absolute;
+    width: 600px;
+}
+
+.linkContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+	  height: 100%;
+	  font-family: 'Bungee Shade', cursive;
+}
+
+/*effect text*/
+
+.linkContainer > h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+    font-size: 12vw;
+    background: linear-gradient(-45deg, #e0cc10 25%, #dc3d4b 25%, #dc3d4b 50%, #e0cc10 50%, #e0cc10 75%, #dc3d4b 75%, #dc3d4b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 20px 20px;
+    background-position: 0 0;
+    animation: stripes 1s linear infinite;
+}
+
+/* button eff */
+
+.coolBeans {
+    position: absolute;
+    top: 45%;
+    right: 15%;
+    border: 2px solid currentColor;
+    border-radius: 3rem;
+    color: rgb(255, 0, 0);
+    font-family: roboto;
+    font-size: 2rem;
+    font-weight: 100;
+    overflow: hidden;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    transition: 0.2s transform ease-in-out;
+    will-change: transform;
+  }
+  .coolBeans::after {
+    background-color: #ff0;
+    border-radius: 3rem;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-100%, 0) rotate(10deg);
+    transform-origin: top left;
+    transition: 0.2s transform ease-out;
+    will-change: transform;
+    z-index: -1;
+  }
+  .coolBeans:hover::after {
+    transform: translate(0, 0);
+  }
+  .coolBeans:hover {
+    border: 2px solid transparent;
+    color: #4b0082;
+    transform: scale(1.05);
+    will-change: transform;
+  }
+  
+
+
+
+
+
+
+
+@keyframes stripes {
+    100% {
+        background-position: 20px 0, 20px 0, 20px 0;
+   }
+}
+
+  

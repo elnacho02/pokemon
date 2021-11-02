@@ -1,11 +1,14 @@
 import './App.css';
 import React from 'react';
-import { Route, BrowserRouter } from "react-router-dom"
+import { Route, BrowserRouter, useHistory } from "react-router-dom"
 import {Navbar, Cards, First, CardDetail, Display, Create} from "./components/index"
 
 
-function App() {
 
+function App() {
+  let history = useHistory()
+  
+  
   var night = "url(https://wallpaper.dog/large/11005243.jpg)"
   var day= "url(https://wallpaper.dog/large/11005249.jpg)";
   var [dark, setDark] = React.useState(false)

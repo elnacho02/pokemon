@@ -17,7 +17,7 @@ function CardDetail  () {
         setFlag(Math.ceil(Math.random()*3))
         axios('http://localhost:3001/pokemon/' + pokeId)
        .then(x => setDetails(x.data[0]))
-       console.log("trai data")
+       console.log("trai data", details)
     },[])
     function handleChange(e){
         if(index === 0) setIndex(1)
@@ -35,7 +35,7 @@ function CardDetail  () {
                 <div className={s.boton} onClick={()=> history.goBack()}>
                     GO BACK
                 </div>
-                {flag === 2 && (
+                {(flag === 2 && details.id.toString().length < 6) && (
                     <div className={s.message}>
                         <img src="http://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/a4172bfc5687a8a.png" alt=""/>
                         <h5>Don´t forget that you can press me!</h5>

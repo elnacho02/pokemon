@@ -1,13 +1,24 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { useState } from 'react'
-import { useHistory } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
+import { connect } from 'react-redux'
+import * as actionsCreators from "../../axios/actions/index";
+import { bindActionCreators } from 'redux';
 import s from "./FilterBar.module.css"
 
-function FilterBar({Types}) {
+function useQuery(){
+    return new URLSearchParams(useLocation().search)
+  }
+
+
+function FilterBar({Types, setOrder}) {
+    const query = useQuery();
+    const filterr = query.get("filter")
+    const originn = query.get("origin")
     let history = useHistory()
-    var [filter, setFilter] = useState("all")
-    var [origin, setOrigin] = useState("all")
+    var [filter, setFilter] = useState(filterr ? filterr : "all")
+    var [origin, setOrigin] = useState(originn ? originn : "all")
+    var [orderBy, setOrderBy] = useState("default")
     
     function handleChangeFilter(e){
         setFilter(e.target.value);
@@ -19,6 +30,11 @@ function FilterBar({Types}) {
         e.preventDefault()
         history.push('?filter='+filter+'&origin='+origin)
       }
+    function handleOrder(e){
+        setOrder(e.target.value)
+        setOrderBy(e.target.value)
+    }
+    
     return(
         <div className={s.container}>
             <input type="checkbox" className={s.checkbox} id='check'/>
@@ -28,11 +44,12 @@ function FilterBar({Types}) {
                 <div className={s.orderByContainer}>
                         <div className={s.orderBy}>
                         <span>Order By</span>
-                            <select className={s.order}>
+                            <select value={orderBy} className={s.order} onChange={handleOrder}>
+                                <option value="default">Default</option>
                                 <option value="a-z">A-Z</option>
                                 <option value="z-a">Z-A</option>
-                                <option value="DESC name">Lower Strength</option>
-                                <option value="ASC Name">Higher Strength</option>
+                                <option value="higher-str">Higher Strength</option>
+                                <option value="lower-str">Lower Strength</option>
                             </select>  
                         </div>
                     </div>
@@ -53,10 +70,12 @@ function FilterBar({Types}) {
                             {Types.map(x=>(
                                 <option value={x.name}>{x.name.charAt(0).toUpperCase() + x.name.slice(1)}</option>
                             ))}
-                            
-                            {/* 
-                            <option value="grass">Grass</option>
-                            <option value="fire">Fire</option> */}
+                        </select>
+                        <span>Origin</span>
+                        <select className='' value={origin} onChange={handleChangeOrigin}>
+                            <option value="all">All</option>
+                            <option value="db">Created by me</option>
+                            <option value="api">Originals</option>
                         </select>
                     </div>
                     <button type="" onClick={handleSubmit}>Filter</button>
@@ -70,11 +89,15 @@ function FilterBar({Types}) {
     )
 }
 
+function mapDispatchToProps(dispatch){
+    return bindActionCreators(actionsCreators, dispatch)
+  }
+
 function mapStateToProps(state){
     return {
       Types: state.types
     }
   }
 
-export default connect(mapStateToProps, null)(FilterBar)
+export default connect(mapStateToProps, mapDispatchToProps)(FilterBar)
 

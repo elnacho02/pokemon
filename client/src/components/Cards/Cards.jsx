@@ -11,17 +11,22 @@ function useQuery(){
     return new URLSearchParams(useLocation().search)
   }
 function Cards({fetchPokemons, deletePokemons,fetchTypes, Pokemons}) {
+    const {ordenar} = require("../utils")
+   
     const query = useQuery();
     const search = query.get("search")
     const filter = query.get("filter")
     const origin = query.get("origin")
     
+    var [order, setOrder] = useState("default")
     var [pag, setPag] = useState(0)
-    
+    var [link, setLink] = useState("")
     useEffect(() => {
       setPag(0)
     }, [Pokemons])
-
+    
+    console.log(origin, "origin")
+    
     useEffect( () => {
       var searchUrl = "";
       if(search) searchUrl = "http://localhost:3001/pokemons?search=" + search
@@ -30,8 +35,15 @@ function Cards({fetchPokemons, deletePokemons,fetchTypes, Pokemons}) {
       deletePokemons()
       fetchPokemons(searchUrl)
       fetchTypes(12)
-    },[search, filter]);
-         
+      setLink(searchUrl)
+    },[search, filter, origin]);
+     
+    
+    console.log(Pokemons)
+    useEffect(()=>{
+    if(order === "default")fetchPokemons(link)
+   },[order])
+    if(order !== "default") ordenar(Pokemons, order)
 
     if( !Pokemons.length ) return(
       <Waiting />
@@ -40,7 +52,7 @@ function Cards({fetchPokemons, deletePokemons,fetchTypes, Pokemons}) {
         <div className={s.mainContainer}>
           {/* <img src={require("../../media/other/nubes.jpg").default} alt="" className={s.fondo}/> */}
           
-          <FilterBar />
+          <FilterBar setOrder={setOrder} />
            <div className={s.container}>
             {(Pokemons.slice(pag, (parseInt(pag)+9))).map(x => (
                   <Card 

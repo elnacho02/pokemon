@@ -5,7 +5,7 @@ import StatBar from '../StatBar/StatBar'
 
 function Stats({details}) {
     const {setColor} = require("../utils")
-    console.log(details, "details desde component stats")
+    console.log(details.altura)
     var colors = setColor(details.types[0])
     
     return (

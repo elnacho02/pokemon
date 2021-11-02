@@ -9,8 +9,8 @@ function dbPoke(db){
             fuerza: e.dataValues.fuerza,
             defensa: e.dataValues.defensa,
             velocidad: e.dataValues.velocidad,
-            peso: e.dataValues.weight,
-            altura: e.dataValues.height
+            peso: e.dataValues.peso,
+            altura: e.dataValues.altura
       }))
 }
 

@@ -1,10 +1,10 @@
 GET http://localhost:3001/pokemons HTTP/1.1
 
 ### 
-GET http://localhost:3001/pokemons?origin=all&filter=flying HTTP/1.1
+GET http://localhost:3001/pokemons?filter=normal&origin=api HTTP/1.1
 
 ### 
-GET https://pokeapi.co/api/v2/pokemon/25 HTTP/1.1
+GET http://localhost:3001/pokemons?filter=all&origin=db HTTP/1.1
 
 ###
 
@@ -13,3 +13,19 @@ GET https://pokeapi.co/api/v2/version-group/1/ HTTP/1.1
 ###
 
 GET https://pokeapi.co/api/v2/evolution-chain/4 HTTP/1.1
+
+###
+POST http://localhost:3001/createPokemon
+Content-Type: application/json
+
+{
+	"name":"nacho1",
+    "img": "http://33.media.tumblr.com/f02aed641beb7a5059d57484c7f80f8c/tumblr_nlmmguXypN1tv87ujo1_400.gif",
+    "vida": 22,
+    "fuerza": 23, 
+    "defensa": 12,
+    "velocidad": 45,
+    "peso": 12,
+    "altura": 55,
+    "types": ["flying","grass"]
+}

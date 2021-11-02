@@ -21,23 +21,24 @@ router.get('/getTypes/:i', async(req,res)=>{
 router.post('/createPokemon', async(req,res)=>{
   try {
     const newPok = await Pokemon.create({
-      name: "Flying-Cat",
-      img: "https://i.gifer.com/5Xyr.gif ",
-      vida: 10,
-      fuerza:15,
-      defensa:12,
-      velocidad:22,
-      peso:24,
-      altura:23,
+      name: req.body.name,
+      img: req.body.img,
+      vida: req.body.vida,
+      fuerza:req.body.fuerza,
+      defensa:req.body.defensa,
+      velocidad:req.body.velocidad,
+      peso:req.body.peso,
+      altura:req.body.altura,
     });
-    res.json(await newPok.addTypes(["normal","flying"]))
+    await newPok.addTypes(req.body.types)
+    res.json(newPok)
   } catch (error) {
     res.send(error);
   }
 
 })
 
-router.get('/pokemon/:id', cache(300), async (req,res)=>{
+router.get('/pokemon/:id'/* , cache(300) */, async (req,res)=>{
   var { id } = req.params
   console.log(id)
   if(id){
@@ -63,7 +64,7 @@ router.get('/pokemon/:id', cache(300), async (req,res)=>{
       db1.length && res.send(db1) 
   }})
 
-router.get('/pokemons', cache(300), async (req,res)=>{
+router.get('/pokemons'/* , cache(300) */, async (req,res)=>{
   //search query
   if(req.query.search){
     var db = await PokemonApi.findAll({where:{name: req.query.search}})
@@ -87,37 +88,35 @@ router.get('/pokemons', cache(300), async (req,res)=>{
         attributes: []
       }
     }})
-  var dbPokemons = dbPoke(db)
+  
+  var dbPokemons = await dbPoke(db)
   var api = await PokemonApi.findAll()
-  
-
- 
-  
-  
   var dbApi = api.concat(dbPokemons)
-  
+ 
+
   //filtrado
-  if((!req.query.filter || req.query.filter === 'all') && (!req.query.origin || req.query.origin === 'all') ) return res.send(dbApi)
-  if(req.query.origin === 'db' && !req.query.filter) return res.send(dbPokemons)
-  if(req.query.origin === 'all' && !req.query.filter) return res.send(dbApi)
-  else if(req.query.filter){
-      if(req.query.origin === 'all' || !req.query.origin){
-        let s = filterBy(dbApi, req.query.filter); 
-        if(s.length) return res.send(s)
-        else return res.send("noResult")
-      }
-      else if(req.query.origin === 'db'){
-        let s = filterBy(filterBy(dbPokemons, req.query.filter))
-        if(s.length) return res.send(s)
-        else return res.send("noResult")
-      }
-      
-      else if(req.query.origin === 'api') {
-        let s = filterBy(api, req.query.filter)
-        if(s.length) return res.send(s)
-        else return res.send("noResult")
-      }
-    }
+  if((!req.query.filter || req.query.filter === 'all') && (!req.query.origin || req.query.origin === 'all')) return res.send(dbApi)
+ 
+  //filtro con querys
+   if(req.query.filter === 'all' && req.query.origin === 'db')if(dbPokemons.length) return res.json(dbPokemons)
+   if(req.query.filter === 'all' && req.query.origin === 'api') return res.send(api)
+
+   if(req.query.filter !== 'all' && req.query.origin === 'all'){
+    let s = filterBy(dbApi, req.query.filter)
+    if(s.length) return res.send(s)
+    else return res.send("noResult")
+  }
+   if(req.query.filter !== 'all' && req.query.origin === 'db'){
+    let s = filterBy(dbPokemons, req.query.filter)
+    if(s.length) return res.send(s)
+    else return res.send("noResult")
+  }
+   if(req.query.filter !== 'all' && req.query.origin === 'api'){
+    let s = filterBy(api, req.query.filter)
+    if(s.length) return res.send(s)
+    else return res.send("noResult")
+  }
+  else return res.send("noResult")
   }
 )
 

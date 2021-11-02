@@ -61,6 +61,15 @@ function setColor(type){
 }
 
 
+function ordenar(array,key){
+    
+    if(key === "a-z") return array.sort((a,b)=> (a.name.toLowerCase() > b.name.toLowerCase()) ? 1:-1)
+    if(key === "z-a") return array.sort((a,b)=> (a.name.toLowerCase() < b.name.toLowerCase()) ? 1:-1)
+    if(key === "higher-str") return array.sort((a,b)=> (a.fuerza < b.fuerza) ? 1:-1)
+    if(key === "lower-str") return array.sort((a,b)=> (a.fuerza > b.fuerza) ? 1:-1)
+}
+
 module.exports = {
-    setColor
+    setColor,
+    ordenar
 }
