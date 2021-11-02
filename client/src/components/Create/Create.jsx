@@ -72,7 +72,7 @@ function Create({types, fetchTypes}) {
                 fuerza: info.fuerza,
                 defensa: info.defensa,
                 velocidad: info.velocidad,
-                peso: info.peso,
+                peso: info.peso*10,
                 altura: info.altura,
                 types: tipos
 			})
@@ -113,36 +113,38 @@ function Create({types, fetchTypes}) {
                     <div className={s.stats}>
                        <div className={s.input}>
                             <h5>HP</h5>
-                            <input type="number" name='vida' max="110" min="1" required onChange={(e)=>handleChange(e)}/>
+                            <input type="number" name='vida' max="150" min="1" required onChange={(e)=>handleChange(e)}/>
                        </div> 
                        <div className={s.input}>
                             <h5>SPEED</h5>
-                            <input type="number" name='velocidad' max="110" min="1" required onChange={(e)=>handleChange(e)}/>
+                            <input type="number" name='velocidad' max="150" min="1" required onChange={(e)=>handleChange(e)}/>
                        </div>
 
                        <div className={s.input}>
                             <h5>STR</h5>
-                            <input type="number"  name="fuerza" max="110" min="1" required onChange={(e)=>handleChange(e)}/>
+                            <input type="number"  name="fuerza" max="150" min="1" required onChange={(e)=>handleChange(e)}/>
                        </div>
 
                        <div className={s.input}>
                             <h5>DEFENSE</h5>
-                            <input type="number" name='defensa' max="110" min="1" required onChange={(e)=>handleChange(e)}/>
+                            <input type="number" name='defensa' max="150" min="1" required onChange={(e)=>handleChange(e)}/>
                        </div>
 
                        <div className={s.input}>
                             <h5>WEIGHT</h5>
                             <input type="number" name='peso' min="1" required onChange={(e)=>handleChange(e)}/>
+                            <h6>kg</h6>
                        </div>
 
                        <div className={s.input}>
                             <h5>HEIGTH</h5>
                             <input type="number" name='altura' min="1" required onChange={(e)=>handleChange(e)}/> 
+                            <h6>x10cm</h6>
                        </div>
                         
                     </div>
                         <div className={s.img}>
-                            <input type="text" name="img" onChange={(e)=>handleChange(e)}/>
+                            <input type="text" name="img" onChange={(e)=>handleChange(e)} autoComplete='off'/>
                             <h5>IMAGE</h5>
                         </div>
                     

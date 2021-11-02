@@ -138,6 +138,7 @@
     align-items: center;
     height: 100%; 
     gap: 50px;
+    animation: myAnim1 1.5s ease 0s 1; 
 }
 .selection>button{
   font-family: 'Anton', sans-serif;
@@ -286,6 +287,16 @@
   background-position: right center; /* change the direction of the change here */
   color: rgb(77, 77, 77);
   text-decoration: none;
+}
+
+
+.input>h6{
+  position: absolute;
+  text-align: center;
+  margin-left: 260px;
+  font-size: 14px;
+  font-family: 'Anton', sans-serif;
+  color: #5e5e5e;
 }
 
 

@@ -16,7 +16,7 @@ function Stats({details}) {
                                 <div className={s.types}>
                                     {details.types.map(x => (
                                             <div className={s.logoType}>
-                                                <img src={require("../../media/pixelTypes/"+x+".png").default} alt="x"/>
+                                                <img src={require("../../media/icons/"+x+".png").default} alt="x" />
                                                 <h5 className={x}>{x.toUpperCase()}</h5> 
                                             </div>
                                         ))} 

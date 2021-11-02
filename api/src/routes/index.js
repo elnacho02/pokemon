@@ -38,7 +38,7 @@ router.post('/createPokemon', async(req,res)=>{
 
 })
 
-router.get('/pokemon/:id'/* , cache(300) */, async (req,res)=>{
+router.get('/pokemon/:id' , cache(300) , async (req,res)=>{
   var { id } = req.params
   console.log(id)
   if(id){
@@ -64,7 +64,7 @@ router.get('/pokemon/:id'/* , cache(300) */, async (req,res)=>{
       db1.length && res.send(db1) 
   }})
 
-router.get('/pokemons'/* , cache(300) */, async (req,res)=>{
+router.get('/pokemons' , cache(300), async (req,res)=>{
   //search query
   if(req.query.search){
     var db = await PokemonApi.findAll({where:{name: req.query.search}})
@@ -91,6 +91,7 @@ router.get('/pokemons'/* , cache(300) */, async (req,res)=>{
   
   var dbPokemons = await dbPoke(db)
   var api = await PokemonApi.findAll()
+  
   var dbApi = api.concat(dbPokemons)
  
 
@@ -124,77 +125,7 @@ router.get('/pokemons'/* , cache(300) */, async (req,res)=>{
 
 
 
-/* router.get('/databaseTypes', async (req,res)=>{
-    var api = await axios('https://pokeapi.co/api/v2/type').then(response => response.data.results);
-    
-    api.forEach( async x => {
-       
-         try {
-            const newType = await Type.create({
-              name: x.name,
-              url: x.url
-            });
-            res.send(newType)
-          } catch (error) {
-            res.send(error);
-          }
-    })
-})
-router.get('/databasePokemonTypes', async (req,res)=>{
-  var api = await Pokemon.findAll()
-  
-   api.forEach(async (x)=>{
-      res.json(await x.addTypes(x.types));
-    })
- 
 
-})*/
-router.get('/databasePoke', async (req,res)=>{
-    var api = await axios('https://pokeapi.co/api/v2/pokemon?limit=39&offset=1').then(response => response.data.results);
-    
-    await Promise.all(api.map(async element => 
-        {var att = await axios(element.url)
-            .then((x) =>({
-            id: x.data.id,
-            types: x.data.types.map(x => x.type.name), 
-            gif: [x.data.sprites.versions["generation-v"]["black-white"].animated.front_default, x.data.sprites.versions["generation-v"]["black-white"].animated.back_default],
-            vida: x.data.stats[0].base_stat,
-            fuerza: x.data.stats[1].base_stat,
-            defensa: x.data.stats[2].base_stat,
-            velocidad: x.data.stats[5].base_stat,
-            peso: x.data.weight,
-            altura: x.data.height
-          }))
-        element.data = att}
-    ))
-      await Promise.all(api.forEach( async x => {
-        try {
-            const newPok = await PokemonApi.create({
-               id: x.data.id, 
-              name: x.name,
-              types:x.data.types,
-              gif: x.data.gif,
-              vida: x.data.vida,
-              fuerza:x.data.fuerza,
-              defensa:x.data.defensa,
-              velocidad:x.data.velocidad,
-              peso:x.data.peso,
-              altura:x.data.altura
-            });
-            res.json(newPok, "creado");
-          } catch (error) {
-            res.send(error);
-          }
-    }) )  
- 
-     var api1 = await Pokemon.findAll()
-    await Promise.all(
-         api1.forEach(async(x,i)=>{
-            res.json(await x.addTypes(api[i].data.types))
-         })
-    )  
-
-})  
 
 
 module.exports = router;
