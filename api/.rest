@@ -1,7 +1,7 @@
 GET http://localhost:3001/pokemons HTTP/1.1
 
 ### 
-GET http://localhost:3001/pokemons?filter=normal&origin=api HTTP/1.1
+GET http://localhost:3001/pokemons HTTP/1.1
 
 ### 
 GET http://localhost:3001/pokemons?filter=all&origin=db HTTP/1.1

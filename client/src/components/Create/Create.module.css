@@ -138,7 +138,7 @@
     align-items: center;
     height: 100%; 
     gap: 50px;
-    animation: myAnim1 1.5s ease 0s 1; 
+    animation: myAnim 1.5s ease 0s 1; 
 }
 .selection>button{
   font-family: 'Anton', sans-serif;

@@ -10,7 +10,7 @@ function Create({types, fetchTypes}) {
     let history = useHistory()
     var [prof, setProf] = useState(1)
     var [tipos, setTipos] = useState([])
-    var [pokemonId, setPokemonId] = useState("")
+    var [pokemon, setPokemon] = useState("")
     var [alert, setAlert] = useState(false)
     
     useEffect(() => {
@@ -76,7 +76,7 @@ function Create({types, fetchTypes}) {
                 altura: info.altura,
                 types: tipos
 			})
-		}).then(x=>x.json()).then(x=>setPokemonId(x.id))
+		}).then(x=>x.json()).then(x=>setPokemon(x.dataValues))
         setProf(3)
         }
         else if(tipos.length<1) {
@@ -86,15 +86,22 @@ function Create({types, fetchTypes}) {
 }
 
 
-    console.log(pokemonId)
+    console.log(pokemon, "desde details")
 
     return (
         <div className={s.mainContainer}>
             <div className={s.divForm}>
                 
                 <div className={s.selection} style={style}>
-                    <button onClick={()=>history.push("/pokemons")}>BACK TO HOME</button>
-                    <button onClick={()=>history.push("/pokemon/"+pokemonId)}>SEE YOUR POKEMON</button>
+                    <div className={s.home}>
+                        <button onClick={()=>history.push("/pokemons")}>BACK TO HOME</button>
+                    </div>
+                    <div className={s.poke}>
+                        {pokemon && (
+                            <button onClick={()=>history.push("/pokemon/"+pokemon.id)}>GO TO YOUR POKEMON {pokemon.name.toUpperCase()}</button>
+                        )}
+                    </div>
+                    
                 </div>
                 
                 
@@ -144,7 +151,7 @@ function Create({types, fetchTypes}) {
                         
                     </div>
                         <div className={s.img}>
-                            <input type="text" name="img" onChange={(e)=>handleChange(e)} autoComplete='off'/>
+                            <input type="text" name="img" onChange={(e)=>handleChange(e)} autoComplete='off' required/>
                             <h5>IMAGE</h5>
                         </div>
                     

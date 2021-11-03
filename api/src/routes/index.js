@@ -6,16 +6,15 @@ const { conn, Pokemon, Type, PokemonApi} = require("../db")
 const {dbPoke, apiPoke, filterBy} = require('./utils')
 const axios = require("axios").default;
 const router = Router();
-const cache = require('../routeCache')
-// Configurar los routers
+const {duration} = require('../routeCache')
 
+// Configurar los routers
 
 
 // Ejemplo: router.use('/auth', authRouter);
 router.get('/getTypes/:i', async(req,res)=>{
   let types = await Type.findAll({limit:req.params.i})
   res.send(types)
-
 })
 
 router.post('/createPokemon', async(req,res)=>{
@@ -31,14 +30,19 @@ router.post('/createPokemon', async(req,res)=>{
       altura:req.body.altura,
     });
     await newPok.addTypes(req.body.types)
-    res.json(newPok)
+    var obj1 = Object.assign({}, newPok)
+    obj1.dataValues.types = req.body.types
+    console.log(obj1)
+    res.json(obj1)
   } catch (error) {
     res.send(error);
   }
 
 })
 
-router.get('/pokemon/:id' , cache(300) , async (req,res)=>{
+
+
+router.get('/pokemon/:id', async (req,res)=>{
   var { id } = req.params
   console.log(id)
   if(id){
@@ -64,7 +68,7 @@ router.get('/pokemon/:id' , cache(300) , async (req,res)=>{
       db1.length && res.send(db1) 
   }})
 
-router.get('/pokemons' , cache(300), async (req,res)=>{
+router.get('/pokemons', async (req,res)=>{
   //search query
   if(req.query.search){
     var db = await PokemonApi.findAll({where:{name: req.query.search}})
@@ -90,11 +94,13 @@ router.get('/pokemons' , cache(300), async (req,res)=>{
     }})
   
   var dbPokemons = await dbPoke(db)
-  var api = await PokemonApi.findAll()
-  
+
+/*  var api = await duration()  */
+ var api = await PokemonApi.findAll()
   var dbApi = api.concat(dbPokemons)
  
-
+ 
+  
   //filtrado
   if((!req.query.filter || req.query.filter === 'all') && (!req.query.origin || req.query.origin === 'all')) return res.send(dbApi)
  
