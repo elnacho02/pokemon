@@ -50,6 +50,7 @@ function FilterBar({Types, setOrder}) {
                                 <option value="z-a">Z-A</option>
                                 <option value="higher-str">Higher Strength</option>
                                 <option value="lower-str">Lower Strength</option>
+                                <option value="+50">{"Fuerza > 50"}</option>
                             </select>  
                         </div>
                     </div>

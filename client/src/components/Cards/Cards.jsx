@@ -39,11 +39,12 @@ function Cards({fetchPokemons, deletePokemons,fetchTypes, Pokemons}) {
     },[search, filter, origin]);
      
     
-    console.log(Pokemons)
+    console.log(Pokemons, "resultado de sort")
     useEffect(()=>{
     if(order === "default")fetchPokemons(link)
    },[order])
-    if(order !== "default") ordenar(Pokemons, order)
+   if(order === "+50") Pokemons = ordenar(Pokemons, "+50") 
+   if(order !== "default") ordenar(Pokemons, order)
 
     if( !Pokemons.length ) return(
       <Waiting />

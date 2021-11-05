@@ -67,6 +67,12 @@ function ordenar(array,key){
     if(key === "z-a") return array.sort((a,b)=> (a.name.toLowerCase() < b.name.toLowerCase()) ? 1:-1)
     if(key === "higher-str") return array.sort((a,b)=> (a.fuerza < b.fuerza) ? 1:-1)
     if(key === "lower-str") return array.sort((a,b)=> (a.fuerza > b.fuerza) ? 1:-1)
+    if(key === "+50") { 
+        var asd = []
+        asd = array.filter(x => x.fuerza > 50);
+        console.log(asd)
+        return asd
+    }
 }
 
 module.exports = {

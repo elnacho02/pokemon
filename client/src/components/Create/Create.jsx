@@ -93,12 +93,12 @@ function Create({types, fetchTypes}) {
             <div className={s.divForm}>
                 
                 <div className={s.selection} style={style}>
-                    <div className={s.home}>
-                        <button onClick={()=>history.push("/pokemons")}>BACK TO HOME</button>
+                    <div className={s.home} onClick={()=>history.push("/pokemons")}>
+                        <div className={s.button} >BACK TO HOME</div>
                     </div>
-                    <div className={s.poke}>
+                    <div className={s.poke} onClick={()=>history.push("/pokemon/"+pokemon.id)}>
                         {pokemon && (
-                            <button onClick={()=>history.push("/pokemon/"+pokemon.id)}>GO TO YOUR POKEMON {pokemon.name.toUpperCase()}</button>
+                            <div className={s.button} > GO TO {pokemon.name.toUpperCase()}</div>
                         )}
                     </div>
                     

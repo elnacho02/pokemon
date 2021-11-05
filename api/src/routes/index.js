@@ -105,7 +105,7 @@ router.get('/pokemons', async (req,res)=>{
   if((!req.query.filter || req.query.filter === 'all') && (!req.query.origin || req.query.origin === 'all')) return res.send(dbApi)
  
   //filtro con querys
-   if(req.query.filter === 'all' && req.query.origin === 'db')if(dbPokemons.length) return res.json(dbPokemons)
+   if(req.query.filter === 'all' && req.query.origin === 'db')if(dbPokemons.length){return res.json(dbPokemons)}else res.send("noResult")
    if(req.query.filter === 'all' && req.query.origin === 'api') return res.send(api)
 
    if(req.query.filter !== 'all' && req.query.origin === 'all'){
